@@ -1,12 +1,12 @@
 @import 'config';
 
 .button {
-   height: 50px;
+   height: $grid * 6;
    border-radius: $grid / 2;
    background-color: $orange;
    font-weight: $font-bold;
    font-size: $font-xl;
-   line-height: 50px;
+   line-height: $grid * 6;
    padding: 0 $grid * 3;
 
    &--rounded {
