@@ -2,31 +2,54 @@
 
 .booking-steps {
    display: grid;
-   grid-template-columns: 1fr repeat(2, max-content);
    grid-gap: $grid * 2;
 
-   .booking-step {
-      display: grid;
-      grid-template-columns: repeat(2, max-content);
-      grid-gap: $grid;
+   &--0 {
+      grid-template-columns: 1fr repeat(2, max-content);
    }
+
+   &--1 {
+      grid-template-columns: max-content 1fr max-content;
+   }
+
+   &--2 {
+      grid-template-columns: repeat(2, max-content) 1fr;
+   }
+}
+
+.booking-step {
+   display: grid;
+   grid-template-columns: repeat(2, max-content);
+   grid-gap: $grid;
 }
 
 .step-number {
    font-size: $font-l;
    font-weight: bold;
-   line-height: 25px;
+   line-height: 26px;
    color: $river-bed;
-   width: 25px;
-   height: 25px;
+   width: 26px;
+   height: 26px;
    border: 3px solid $river-bed;
    border-radius: 16px;
    text-align: center;
 }
 
 .step-label {
-   align-self: center;
-   font-size: $font-s;
+   display: none;
+}
+
+.active-step {
+   .step-number {
+      color: white;
+      border-color: $orange;
+   }
+
+   .step-label {
+      display: block;
+      align-self: center;
+      font-size: $font-s;
+   }
 }
 
 @media screen and (min-width: $bp-desktop) {
@@ -34,5 +57,11 @@
       grid-template-columns: repeat(3, max-content);
       grid-gap: $grid * 3;
       justify-content: center;
+   }
+
+   .step-label {
+      display: block;
+      align-self: center;
+      font-size: $font-s;
    }
 }
