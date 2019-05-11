@@ -1,6 +1,7 @@
 import React from 'react';
 import css from './App.module.scss';
 import logo from './images/logo.png';
+import BookingSteps from './components/BookingSteps';
 
 function App() {
    return (
@@ -8,7 +9,9 @@ function App() {
          <header className={css.header}>
             <img src={logo} alt="Talixo logo" className={css['talixo-logo']} />
          </header>
-         <div className={css['content-container']}>content</div>
+         <div className={css['content-container']}>
+            <BookingSteps activeStep={3} />
+         </div>
       </div>
    );
 }
