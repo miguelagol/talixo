@@ -105,11 +105,6 @@ button {
    vertical-align: baseline;
 }
 
-/* make sure to set some focus styles for accessibility */
-:focus {
-   outline: 0;
-}
-
 /* HTML5 display-role reset for older browsers */
 article,
 aside,
