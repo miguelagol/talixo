@@ -10,7 +10,7 @@ function App() {
             <img src={logo} alt="Talixo logo" className={css['talixo-logo']} />
          </header>
          <div className={css['content-container']}>
-            <BookingSteps />
+            <BookingSteps activeStep={3} />
          </div>
       </div>
    );

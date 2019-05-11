@@ -4,15 +4,15 @@
    display: grid;
    grid-gap: $grid * 2;
 
-   &--0 {
+   &--1 {
       grid-template-columns: 1fr repeat(2, max-content);
    }
 
-   &--1 {
+   &--2 {
       grid-template-columns: max-content 1fr max-content;
    }
 
-   &--2 {
+   &--3 {
       grid-template-columns: repeat(2, max-content) 1fr;
    }
 }
