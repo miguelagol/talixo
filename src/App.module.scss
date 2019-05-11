@@ -20,7 +20,7 @@
 }
 
 .content-container {
-   max-width: 980px;
+   max-width: $bp-desktop;
    background-color: $ebony-clay;
    margin: 0 auto;
    padding: $grid * 2;
@@ -28,9 +28,9 @@
    font-size: $font-m;
 }
 
-@media screen and (min-width: 980px) {
+@media screen and (min-width: $bp-desktop) {
    .header {
-      grid-template-columns: 1fr 980px 1fr;
+      grid-template-columns: 1fr $bp-desktop 1fr;
       grid-template-areas: '. logo .';
       background-color: $mako;
    }
