@@ -12,7 +12,7 @@ export default function Label({ className, labelPosition, name, children, ...res
 
    return (
       <label className={classes}>
-         <span>{name}</span>
+         <span className={css['label-name']}>{name}</span>
          {children}
       </label>
    );
