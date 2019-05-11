@@ -1,6 +1,6 @@
 import React from 'react';
 import css from './App.module.scss';
-import logo from './talixo_logo.png';
+import logo from './images/logo.png';
 
 function App() {
    return (
