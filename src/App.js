@@ -2,6 +2,7 @@ import React from 'react';
 import css from './App.module.scss';
 import logo from './images/logo.png';
 import BookingSteps from './components/BookingSteps';
+import Button from './components/Button';
 
 function App() {
    return (
@@ -11,6 +12,7 @@ function App() {
          </header>
          <div className={css['content-container']}>
             <BookingSteps activeStep={3} />
+            <Button type="button">Start Booking</Button>
          </div>
       </div>
    );

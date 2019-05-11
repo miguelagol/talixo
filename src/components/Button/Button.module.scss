@@ -1,0 +1,15 @@
+@import 'config';
+
+.button {
+   height: 50px;
+   border-radius: $grid / 2;
+   background-color: $orange;
+   font-weight: $font-bold;
+   font-size: $font-xl;
+   line-height: 50px;
+   padding: 0 $grid * 3;
+
+   &--rounded {
+      border-radius: 25px;
+   }
+}
