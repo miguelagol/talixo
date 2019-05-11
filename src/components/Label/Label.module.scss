@@ -1,0 +1,22 @@
+@import 'config';
+
+.label {
+   &--left {
+      display: grid;
+      grid-template-columns: max-content 1fr;
+      background-color: white;
+      border-radius: 3px;
+      color: $silver-chalice;
+      font-size: $font-l;
+      line-height: $grid * 6;
+
+      span {
+         padding: 0 $grid;
+      }
+   }
+
+   &--top {
+      font-size: $font-s;
+      line-height: $grid * 3;
+   }
+}
