@@ -1,0 +1,16 @@
+@import 'config';
+
+.input {
+   height: $grid * 6;
+   width: 100%;
+   border-radius: 3px;
+   font-size: $font-l;
+   color: $river-bed;
+   padding: 0 $grid;
+   box-sizing: border-box;
+}
+
+.input::selection {
+   background-color: $red;
+   color: white;
+}

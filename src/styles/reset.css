@@ -295,6 +295,7 @@ legend {
 input,
 select,
 textarea {
+   font: inherit;
    font-size: 100%; /* 1 */
    margin: 0; /* 2 */
    vertical-align: baseline; /* 3 */
@@ -424,6 +425,10 @@ input,
 select,
 textarea {
    color: inherit;
+}
+
+input {
+   border: 0;
 }
 
 ::-moz-selection {
