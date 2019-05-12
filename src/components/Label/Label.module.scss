@@ -6,17 +6,19 @@
       grid-template-columns: max-content 1fr;
       background-color: white;
       border-radius: 3px;
-      color: $silver-chalice;
-      font-size: $font-l;
-      line-height: $grid * 6;
 
       .label-name {
+         color: $silver-chalice;
+         font-size: $font-l;
          padding: 0 $grid;
+         line-height: $grid * 6;
       }
    }
 
    &--top {
-      font-size: $font-s;
-      line-height: $grid * 3;
+      .label-name {
+         line-height: $grid * 3;
+         font-size: $font-s;
+      }
    }
 }
