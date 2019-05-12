@@ -1,19 +1,32 @@
 import React from 'react';
 import AsyncSelect from 'react-select/lib/Async';
 
+const colors = {
+   orange: '#ff4800',
+   porcelain: '#EBECED',
+   iron: '#d2d6da',
+   tundora: '#4c4c4c',
+};
+
 export default function Select({ ...rest }) {
    const selectStyles = {
-      control: styles => ({ ...styles, border: 0 }),
+      control: (styles, { isFocused }) => ({
+         ...styles,
+         border: 0,
+         boxShadow: 'none',
+         outline: isFocused ? 'rgba(0, 102, 245, 0.25) auto 5px' : 'none',
+         outlineOffset: -2,
+      }),
       placeholder: styles => ({
          ...styles,
-         color: '#d2d6da',
+         color: colors.iron,
          fontSize: 20,
          margin: 0,
          ' + div': { margin: 0, padding: 0 },
       }),
       indicatorsContainer: styles => ({
          ...styles,
-         svg: { width: 32, height: 32, color: '#ff4800' },
+         svg: { width: 32, height: 32, color: colors.orange },
       }),
       valueContainer: styles => ({
          ...styles,
@@ -29,7 +42,17 @@ export default function Select({ ...rest }) {
       }),
       option: styles => ({
          ...styles,
-         color: 'black',
+         fontSize: 20,
+         color: colors.tundora,
+         backgroundColor: 'transparent',
+         ':hover': {
+            ...styles[':hover'],
+            backgroundColor: colors.porcelain,
+         },
+         ':active': {
+            ...styles[':active'],
+            backgroundColor: colors.porcelain,
+         },
       }),
    };
 
