@@ -101,7 +101,7 @@ button {
    padding: 0;
    border: 0;
    font-size: 100%;
-   font: inherit;
+   font-family: inherit;
    vertical-align: baseline;
 }
 
@@ -214,6 +214,12 @@ html {
    -ms-text-size-adjust: 100%; /* 2 */
 }
 
+input:focus,
+button:focus {
+   outline: rgba(0, 102, 245, 0.25) auto 5px;
+   outline-offset: -2px;
+}
+
 /**
  * Address `outline` inconsistency between Chrome and other browsers.
  */
@@ -290,7 +296,7 @@ legend {
 input,
 select,
 textarea {
-   font: inherit;
+   font-family: inherit;
    font-size: 100%; /* 1 */
    margin: 0; /* 2 */
    vertical-align: baseline; /* 3 */
