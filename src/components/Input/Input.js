@@ -5,11 +5,13 @@ import css from './Input.module.scss';
 
 const classNames = classnames.bind(css);
 
-export default function Input({ className, ...rest }) {
+const Input = React.forwardRef(function({ className, ...rest }, ref) {
    const classes = classNames('input', className);
 
-   return <input className={classes} {...rest} />;
-}
+   return <input ref={ref} className={classes} {...rest} />;
+});
+
+Input.displayName = 'Input';
 
 Input.propTypes = {
    className: PropTypes.string,
@@ -18,3 +20,5 @@ Input.propTypes = {
 Input.defaultProps = {
    className: undefined,
 };
+
+export default Input;
