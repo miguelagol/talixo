@@ -22,7 +22,6 @@ export default function Select({ ...rest }) {
          color: colors.iron,
          fontSize: 20,
          margin: 0,
-         ' + div': { margin: 0, padding: 0 },
       }),
       indicatorsContainer: styles => ({
          ...styles,
@@ -31,6 +30,10 @@ export default function Select({ ...rest }) {
       valueContainer: styles => ({
          ...styles,
          padding: '0px 8px',
+      }),
+      menu: styles => ({
+         ...styles,
+         marginTop: 4,
       }),
       input: styles => ({
          ...styles,
@@ -44,6 +47,7 @@ export default function Select({ ...rest }) {
          ...styles,
          fontSize: 20,
          color: colors.tundora,
+         padding: 12,
          backgroundColor: 'transparent',
          ':hover': {
             ...styles[':hover'],
@@ -54,7 +58,11 @@ export default function Select({ ...rest }) {
             backgroundColor: colors.porcelain,
          },
       }),
+      noOptionsMessage: styles => ({
+         ...styles,
+         padding: 10,
+      }),
    };
 
-   return <AsyncSelect styles={selectStyles} {...rest} />;
+   return <AsyncSelect escapeClearsValue isClearable isSearchable styles={selectStyles} {...rest} />;
 }
