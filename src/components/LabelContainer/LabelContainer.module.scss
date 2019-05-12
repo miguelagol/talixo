@@ -6,7 +6,6 @@
       grid-template-columns: max-content 1fr;
       background-color: white;
       border-radius: 3px;
-      overflow: hidden;
 
       .label {
          color: $silver-chalice;
@@ -14,6 +13,7 @@
          padding: 0 $grid;
          display: grid;
          align-content: center;
+         border-radius: 3px 0 0 3px;
 
          &--dark {
             background-color: $iron;
