@@ -1,6 +1,6 @@
 @import 'config';
 
-.label {
+.label-container {
    &--left {
       display: grid;
       grid-template-columns: max-content 1fr;
@@ -8,7 +8,7 @@
       border-radius: 3px;
       overflow: hidden;
 
-      .label-name {
+      .label {
          color: $silver-chalice;
          font-size: $font-l;
          padding: 0 $grid;
@@ -22,7 +22,7 @@
    }
 
    &--top {
-      .label-name {
+      .label {
          line-height: $grid * 3;
          font-size: $font-s;
       }
