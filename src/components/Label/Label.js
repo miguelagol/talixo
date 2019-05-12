@@ -5,15 +5,17 @@ import css from './Label.module.scss';
 
 const classNames = classnames.bind(css);
 
-export default function Label({ className, labelPosition, name, children, ...rest }) {
-   const classes = classNames('label', className, {
+export default function Label({ className, labelPosition, name, children, variant, ...rest }) {
+   const labelClasses = classNames('label', className, {
       [`label--${labelPosition}`]: labelPosition,
    });
 
+   const labelNameClasses = classNames('label-name', { [`label-name--${variant}`]: variant });
+
    return (
-      <label className={classes}>
-         <span className={css['label-name']}>{name}</span>
-         {children}
+      <label className={labelClasses} {...rest}>
+         <div className={labelNameClasses}>{name}</div>
+         <div className={css.children}>{children}</div>
       </label>
    );
 }
@@ -21,10 +23,12 @@ export default function Label({ className, labelPosition, name, children, ...res
 Label.propTypes = {
    className: PropTypes.string,
    labelPosition: PropTypes.oneOf(['top', 'left']).isRequired,
-   name: PropTypes.string.isRequired,
+   name: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
    children: PropTypes.node.isRequired,
+   variant: PropTypes.oneOf(['dark']),
 };
 
 Label.defaultProps = {
    className: undefined,
+   variant: undefined,
 };
