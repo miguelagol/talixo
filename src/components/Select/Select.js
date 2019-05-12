@@ -42,6 +42,7 @@ export default function Select({ ...rest }) {
       singleValue: styles => ({
          ...styles,
          fontSize: 20,
+         lineHeight: '48px',
       }),
       option: styles => ({
          ...styles,
