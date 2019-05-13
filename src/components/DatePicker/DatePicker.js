@@ -6,19 +6,7 @@ import Input from '../Input';
 import css from './DatePicker.module.scss';
 
 export default function DatePicker({ value, ...rest }) {
-   return (
-      <ReactDatePicker
-         customInput={<Input />}
-         calendarClassName={css.calendar}
-         showTimeSelect
-         timeFormat="HH:mm"
-         dateFormat="MMMM d, yyyy h:mm aa"
-         timeIntervals={15}
-         timeCaption="time"
-         {...rest}
-         selected={value}
-      />
-   );
+   return <ReactDatePicker customInput={<Input />} calendarClassName={css.calendar} {...rest} selected={value} />;
 }
 
 DatePicker.propTypes = {

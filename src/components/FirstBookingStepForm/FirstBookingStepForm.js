@@ -9,7 +9,6 @@ import Button from '../Button';
 import LabelContainer from '../LabelContainer';
 import Input from '../Input';
 import Select from '../Select';
-import DatePicker from '../DatePicker';
 import DayPicker from '../DayPicker';
 import css from './FirstBookingStepForm.module.scss';
 
@@ -29,9 +28,7 @@ export default function FirstBookingStepForm() {
                      <Select placeholder="e.g Tegel Airport" />
                   </LabelContainer>
 
-                  <LabelContainer labelPosition={labelPosition} label={labelPosition === 'top' ? 'On:' : ''} as="div">
-                     <DayPicker />
-                  </LabelContainer>
+                  <DayPicker labelPosition={labelPosition} />
 
                   <LabelContainer labelPosition={labelPosition} label="Voucher code (optional):">
                      <Input />
