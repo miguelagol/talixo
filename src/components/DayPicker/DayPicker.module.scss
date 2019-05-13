@@ -1,8 +1,26 @@
 @import 'config';
 
+.container {
+   display: grid;
+   grid-template-columns: 1fr 120px;
+   grid-gap: $grid * 2;
+}
+
+.small-screen {
+   grid-template-columns: 1fr;
+}
+
+.clock-icon,
+.calendar-icon {
+   color: $orange;
+   width: 24px;
+   height: 24px;
+   margin-right: 4px;
+}
+
 .days-container {
    display: grid;
-   grid-template: $grid * 6 / repeat(3, 1fr);
+   grid-template: $grid * 6 / repeat(3, 1fr) auto;
    grid-gap: $grid;
    align-items: center;
    background-color: white;
@@ -53,5 +71,31 @@
       top: calc(50% - 3px);
       left: -3px;
       transform: rotate(135deg);
+   }
+
+   .calendar-container {
+      display: grid;
+      align-items: center;
+      grid-auto-flow: column;
+      cursor: pointer;
+
+      &::before {
+         content: '';
+         height: 32px;
+         border-left: 1px solid #cccccc;
+         position: relative;
+         right: 9px;
+         top: 0px;
+         display: block;
+         float: left;
+      }
+   }
+
+   .date-picker {
+      display: none;
+   }
+
+   .popper {
+      left: -30px !important;
    }
 }
