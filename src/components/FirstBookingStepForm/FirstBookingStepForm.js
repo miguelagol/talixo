@@ -19,7 +19,7 @@ export default function FirstBookingStepForm() {
             const labelPosition = matches ? 'top' : 'left';
 
             return (
-               <>
+               <div className={css.container}>
                   <LabelContainer labelPosition={labelPosition} label="Pick up:">
                      <Select placeholder="e.g Torstrasse 124, Berlin" />
                   </LabelContainer>
@@ -40,49 +40,33 @@ export default function FirstBookingStepForm() {
                      <span>For 1-2 passengers with 1-2 bags</span>
                      <span className={css['more-options']}>more options</span>
                      <div className={css.options}>
-                        <LabelContainer
-                           labelPosition="left"
-                           label={<PersonIcon style={{ padding: '0 8px' }} />}
-                           variant="dark"
-                        >
+                        <LabelContainer labelPosition="left" label={<PersonIcon className={css.icon} />} variant="dark">
                            <Select placeholder="2" />
                         </LabelContainer>
 
                         <LabelContainer
                            labelPosition="left"
-                           label={<SuitcaseIcon style={{ padding: '0 8px' }} />}
+                           label={<SuitcaseIcon className={css.icon} />}
                            variant="dark"
                         >
                            <Select placeholder="2" />
                         </LabelContainer>
 
-                        <LabelContainer
-                           labelPosition="left"
-                           label={<SportIcon style={{ padding: '0 8px' }} />}
-                           variant="dark"
-                        >
+                        <LabelContainer labelPosition="left" label={<SportIcon className={css.icon} />} variant="dark">
                            <Select placeholder="0" />
                         </LabelContainer>
 
-                        <LabelContainer
-                           labelPosition="left"
-                           label={<DogIcon style={{ padding: '0 8px' }} />}
-                           variant="dark"
-                        >
+                        <LabelContainer labelPosition="left" label={<DogIcon className={css.icon} />} variant="dark">
                            <Select placeholder="0" />
                         </LabelContainer>
 
-                        <LabelContainer
-                           labelPosition="left"
-                           label={<BabyIcon style={{ padding: '0 8px' }} />}
-                           variant="dark"
-                        >
+                        <LabelContainer labelPosition="left" label={<BabyIcon className={css.icon} />} variant="dark">
                            <Select placeholder="0" />
                         </LabelContainer>
                      </div>
                   </div>
                   <Button type="button">Start Booking</Button>
-               </>
+               </div>
             );
          }}
       </Media>

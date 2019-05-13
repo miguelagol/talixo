@@ -22,7 +22,7 @@
 .content-container {
    display: grid;
    grid-template-columns: minmax(min-content, $bp-desktop);
-   grid-gap: $grid * 2;
+   grid-gap: $grid * 3;
    max-width: $bp-desktop;
    background-color: $ebony-clay;
    margin: 0 auto;

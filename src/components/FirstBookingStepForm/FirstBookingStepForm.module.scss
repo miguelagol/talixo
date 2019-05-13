@@ -1,5 +1,10 @@
 @import 'config';
 
+.container {
+   display: grid;
+   grid-gap: $grid * 2;
+}
+
 .options-container {
    display: grid;
    grid-template-columns: 1fr max-content;
@@ -14,5 +19,9 @@
       display: grid;
       grid-gap: $grid;
       grid-template-columns: repeat(auto-fill, minmax(245px, 1fr));
+
+      .icon {
+         padding: 0 8px;
+      }
    }
 }
