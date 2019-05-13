@@ -20,29 +20,26 @@ function App() {
             <BookingSteps activeStep={1} />
             <br />
             <br />
-            <LabelContainer labelPosition="left" label="Voucher code (optional):">
-               <Input />
-            </LabelContainer>
-            <br />
-            <LabelContainer labelPosition="top" label="Voucher code (optional):">
-               <Input />
-            </LabelContainer>
-            <br />
-            <br />
-            <LabelContainer labelPosition="left" label={<BabyIcon style={{ padding: '0 8px' }} />} variant="dark">
-               <Select placeholder="e.g Torstrasse 124, Berlin" />
-            </LabelContainer>
-            <br />
-            <LabelContainer labelPosition="top" label="Pick up:">
-               <Select placeholder="e.g Torstrasse 124, Berlin" />
-            </LabelContainer>
-            <br />
-            <Button type="button">Start Booking</Button>
-            <br />
-            <br />
-            <LabelContainer labelPosition="left" label="Pick up:">
-               <DatePicker value={new Date('05 12 2019 8:00 PM')} />
-            </LabelContainer>
+
+            <div className={css['days-container']}>
+               <input type="radio" id="day1" name="radios" checked />
+               <label htmlFor="day1" className={css['day-container']}>
+                  <span className={css.date}>13.05</span>
+                  <span className={css.day}>Today</span>
+               </label>
+
+               <input type="radio" id="day2" name="radios" />
+               <label htmlFor="day2" className={css['day-container']}>
+                  <span className={css.date}>14.05</span>
+                  <span className={css.day}>Tomorrow</span>
+               </label>
+
+               <input type="radio" id="day3" name="radios" />
+               <label htmlFor="day3" className={css['day-container']}>
+                  <span className={css.date}>15.05</span>
+                  <span className={css.day}>Wednesday</span>
+               </label>
+            </div>
          </div>
       </div>
    );

@@ -44,3 +44,39 @@
       padding: $grid * 5;
    }
 }
+
+.days-container {
+   display: grid;
+   grid-template: 48px / repeat(3, 1fr);
+   grid-gap: $grid;
+   background-color: white;
+   border-radius: 3px;
+   padding: 0 $grid;
+
+   input[type='radio'] {
+      display: none;
+   }
+
+   .day-container {
+      display: grid;
+      grid-template-rows: repeat(2, min-content);
+      color: $tundora;
+      box-sizing: border-box;
+      align-content: center;
+   }
+
+   .date {
+      font-size: $font-xs;
+      font-weight: $font-bold;
+      line-height: $grid * 2;
+   }
+
+   .day {
+      font-size: $font-s;
+      line-height: $grid * 2;
+   }
+
+   input[type='radio']:checked + label .date {
+      color: $orange;
+   }
+}
