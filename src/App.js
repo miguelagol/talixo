@@ -47,31 +47,40 @@ function App() {
 
             <div className={css['options-container']}>
                <span>For 1-2 passengers with 1-2 bags</span>
-               <span>more options</span>
+               <span className={css['more-options']}>more options</span>
+               <div className={css.options}>
+                  <LabelContainer
+                     labelPosition="left"
+                     label={<PersonIcon style={{ padding: '0 8px' }} />}
+                     variant="dark"
+                  >
+                     <Select placeholder="2" />
+                  </LabelContainer>
 
-               <LabelContainer labelPosition="left" label={<PersonIcon style={{ padding: '0 8px' }} />} variant="dark">
-                  <Select placeholder="2" />
-               </LabelContainer>
+                  <LabelContainer
+                     labelPosition="left"
+                     label={<SuitcaseIcon style={{ padding: '0 8px' }} />}
+                     variant="dark"
+                  >
+                     <Select placeholder="2" />
+                  </LabelContainer>
 
-               <LabelContainer
-                  labelPosition="left"
-                  label={<SuitcaseIcon style={{ padding: '0 8px' }} />}
-                  variant="dark"
-               >
-                  <Select placeholder="2" />
-               </LabelContainer>
+                  <LabelContainer
+                     labelPosition="left"
+                     label={<SportIcon style={{ padding: '0 8px' }} />}
+                     variant="dark"
+                  >
+                     <Select placeholder="0" />
+                  </LabelContainer>
 
-               <LabelContainer labelPosition="left" label={<SportIcon style={{ padding: '0 8px' }} />} variant="dark">
-                  <Select placeholder="2" />
-               </LabelContainer>
+                  <LabelContainer labelPosition="left" label={<DogIcon style={{ padding: '0 8px' }} />} variant="dark">
+                     <Select placeholder="0" />
+                  </LabelContainer>
 
-               <LabelContainer labelPosition="left" label={<DogIcon style={{ padding: '0 8px' }} />} variant="dark">
-                  <Select placeholder="2" />
-               </LabelContainer>
-
-               <LabelContainer labelPosition="left" label={<BabyIcon style={{ padding: '0 8px' }} />} variant="dark">
-                  <Select placeholder="2" />
-               </LabelContainer>
+                  <LabelContainer labelPosition="left" label={<BabyIcon style={{ padding: '0 8px' }} />} variant="dark">
+                     <Select placeholder="0" />
+                  </LabelContainer>
+               </div>
             </div>
 
             <Button type="button">Start Booking</Button>
