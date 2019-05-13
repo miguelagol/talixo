@@ -1,9 +1,29 @@
 @import 'config';
 
 .label-container {
+   &--right {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      grid-template-areas: 'children label';
+      background-color: white;
+      border-radius: 3px;
+
+      .label {
+         grid-area: label;
+         padding: 0 $grid;
+         display: grid;
+         align-content: center;
+         border-radius: 3px 0 0 3px;
+      }
+
+      .children {
+         grid-area: children;
+      }
+   }
+
    &--left {
       display: grid;
-      grid-template-columns: max-content 1fr;
+      grid-template-columns: auto 1fr;
       background-color: white;
       border-radius: 3px;
 

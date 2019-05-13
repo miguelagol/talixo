@@ -25,7 +25,7 @@ export default function LabelContainer({ className, labelPosition, label, childr
 
 LabelContainer.propTypes = {
    className: PropTypes.string,
-   labelPosition: PropTypes.oneOf(['top', 'left']).isRequired,
+   labelPosition: PropTypes.oneOf(['top', 'left', 'right']).isRequired,
    label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
    children: PropTypes.node.isRequired,
    variant: PropTypes.oneOf(['dark']),
