@@ -1,6 +1,7 @@
 import React from 'react';
 import classnames from 'classnames/bind';
 import PropTypes from 'prop-types';
+import Media from 'react-media';
 import { GoCalendar } from 'react-icons/go';
 import { FaRegClock } from 'react-icons/fa';
 import DatePicker from '../DatePicker';
@@ -9,11 +10,13 @@ import css from './DayPicker.module.scss';
 
 const classNames = classnames.bind(css);
 
-export default function DayPicker({ labelPosition }) {
+function DayPicker({ labelPosition, isSmallScreen }) {
    const labelClasses = classNames('day-container', 'active');
 
+   const containerClasses = classNames('container', { 'small-screen': isSmallScreen });
+
    return (
-      <div className={css.container}>
+      <div className={containerClasses}>
          <LabelContainer labelPosition={labelPosition} label={labelPosition === 'top' ? 'On:' : ''} as="div">
             <div className={css['days-container']}>
                <label className={labelClasses}>
@@ -41,28 +44,48 @@ export default function DayPicker({ labelPosition }) {
                      className={css['date-picker']}
                      popperPlacement="left"
                      popperClassName={css.popper}
+                     startOpen
+                     showTimeSelect={isSmallScreen}
+                     timeIntervals={15}
+                     dateFormat="hh:mm"
+                     timeCaption="Time"
                   />
                </label>
             </div>
          </LabelContainer>
-
-         <LabelContainer labelPosition={labelPosition} label={labelPosition === 'top' ? 'At:' : ''} as="div">
-            <LabelContainer labelPosition="right" label={<FaRegClock className={css['clock-icon']} />}>
-               <DatePicker
-                  value={new Date('05 12 2019 8:00 PM')}
-                  popperClassName={css.popper}
-                  showTimeSelect
-                  showTimeSelectOnly
-                  timeIntervals={15}
-                  dateFormat="hh:mm"
-                  timeCaption="Time"
-               />
+         {!isSmallScreen && (
+            <LabelContainer labelPosition={labelPosition} label={labelPosition === 'top' ? 'At:' : ''} as="div">
+               <LabelContainer labelPosition="right" label={<FaRegClock className={css['clock-icon']} />}>
+                  <DatePicker
+                     value={new Date('05 12 2019 8:00 PM')}
+                     popperClassName={css.popper}
+                     showTimeSelect
+                     showTimeSelectOnly
+                     timeIntervals={15}
+                     dateFormat="hh:mm"
+                     timeCaption="Time"
+                  />
+               </LabelContainer>
             </LabelContainer>
-         </LabelContainer>
+         )}
       </div>
    );
 }
 
 DayPicker.propTypes = {
    labelPosition: PropTypes.string.isRequired,
+   isSmallScreen: PropTypes.bool.isRequired,
 };
+
+// eslint-disable-next-line react/display-name
+export default function(props) {
+   return (
+      <Media query="(max-width: 500px)">
+         {matches => {
+            const isSmallScreen = matches;
+
+            return <DayPicker {...props} isSmallScreen={isSmallScreen} />;
+         }}
+      </Media>
+   );
+}

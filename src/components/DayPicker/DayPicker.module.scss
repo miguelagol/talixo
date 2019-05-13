@@ -6,6 +6,10 @@
    grid-gap: $grid * 2;
 }
 
+.small-screen {
+   grid-template-columns: 1fr;
+}
+
 .clock-icon,
 .calendar-icon {
    color: $orange;
