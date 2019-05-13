@@ -19,6 +19,10 @@
             background-color: $porcelain;
          }
       }
+
+      &.no-label {
+         grid-template-columns: 1fr;
+      }
    }
 
    &--top {

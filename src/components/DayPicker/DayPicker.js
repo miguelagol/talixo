@@ -1,5 +1,7 @@
 import React from 'react';
 import classnames from 'classnames/bind';
+import { GoCalendar } from 'react-icons/go';
+import DatePicker from '../DatePicker';
 import css from './DayPicker.module.scss';
 
 const classNames = classnames.bind(css);
@@ -25,6 +27,16 @@ export default function DaysContainer() {
             <input type="radio" id="day3" name="radios" />
             <span className={css.date}>15.05</span>
             <span className={css.day}>Wednesday</span>
+         </label>
+
+         <label className={css['calendar-container']}>
+            {<GoCalendar className={css['calendar-icon']} />}
+            <DatePicker
+               value={new Date('05 12 2019 8:00 PM')}
+               className={css['date-picker']}
+               popperPlacement="left"
+               popperClassName={css.popper}
+            />
          </label>
       </div>
    );
