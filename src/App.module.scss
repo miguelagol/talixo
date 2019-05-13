@@ -31,23 +31,6 @@
    font-size: $font-m;
 }
 
-.options-container {
-   display: grid;
-   grid-template-columns: 1fr max-content;
-   grid-gap: $grid * 2;
-
-   .more-options {
-      color: $orange;
-   }
-
-   .options {
-      grid-column: 1 / span 2;
-      display: grid;
-      grid-gap: $grid;
-      grid-template-columns: repeat(auto-fill, minmax(245px, 1fr));
-   }
-}
-
 @media screen and (min-width: $bp-desktop) {
    .header {
       grid-template-columns: 1fr $bp-desktop 1fr;
