@@ -1,0 +1,57 @@
+@import 'config';
+
+.days-container {
+   display: grid;
+   grid-template: $grid * 6 / repeat(3, 1fr);
+   grid-gap: $grid;
+   align-items: center;
+   background-color: white;
+   border-radius: 3px;
+   padding: 0 $grid;
+
+   input[type='radio'] {
+      display: none;
+   }
+
+   .day-container {
+      display: grid;
+      color: $tundora;
+      align-content: center;
+   }
+
+   .date {
+      font-size: $font-xs;
+      font-weight: $font-extra-bold;
+      line-height: $grid * 2;
+   }
+
+   .day {
+      font-size: $font-s;
+      line-height: $grid * 2;
+   }
+
+   .active {
+      border-left: 2px solid $orange;
+      position: relative;
+      height: $grid * 4;
+      padding-left: $grid;
+
+      .date {
+         color: $orange;
+      }
+   }
+
+   .active::before {
+      content: '';
+      position: absolute;
+      height: 4px;
+      width: 4px;
+      display: block;
+      border-left: 2px solid $orange;
+      border-top: 2px solid $orange;
+      background: white;
+      top: calc(50% - 3px);
+      left: -3px;
+      transform: rotate(135deg);
+   }
+}
