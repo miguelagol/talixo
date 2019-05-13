@@ -44,7 +44,6 @@ function DayPicker({ labelPosition, isSmallScreen }) {
                      className={css['date-picker']}
                      popperPlacement="left"
                      popperClassName={css.popper}
-                     startOpen
                      showTimeSelect={isSmallScreen}
                      timeIntervals={15}
                      dateFormat="hh:mm"
