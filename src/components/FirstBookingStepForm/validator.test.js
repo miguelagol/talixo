@@ -1,7 +1,7 @@
 import validator from './validator';
 
 test('should return errors for all required fields ', () => {
-   const initialValues = { voucherCode: 'talixo' };
+   const initialValues = { voucherCode: '#pleaseHireMe' };
 
    const expected = {
       startAddress: 'This field is required',

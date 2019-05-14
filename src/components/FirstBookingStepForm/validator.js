@@ -14,7 +14,7 @@ export default function validator(values) {
    if (
       !yup
          .mixed()
-         .oneOf(['talixo', 'internship'])
+         .oneOf(['#pleaseHireMe', '#iWillDoMyBest', ''])
          .isValidSync(values.voucherCode)
    ) {
       errors.voucherCode = 'Invalid voucher code';
