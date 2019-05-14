@@ -4,13 +4,15 @@
    "private": true,
    "dependencies": {
       "classnames": "^2.2.6",
+      "formik": "^1.5.4",
       "react": "^16.8.6",
       "react-datepicker": "^2.5.0",
       "react-dom": "^16.8.6",
       "react-icons": "^3.7.0",
       "react-media": "^1.9.2",
       "react-scripts": "3.0.1",
-      "react-select": "^2.4.3"
+      "react-select": "^2.4.3",
+      "yup": "^0.27.0"
    },
    "scripts": {
       "start": "react-scripts start",
