@@ -19,7 +19,7 @@ import { getCitiesData } from '../../utils/api';
 
 const options = number => new Array(number).fill(0).map((_, index) => ({ label: index, value: index }));
 
-export default function FirstBookingStepForm({ initialFormState, onSubmit }) {
+export default function FirstBookingStepForm({ initialFormState, onSubmit, history }) {
    return (
       <Media query="(max-width: 980px)">
          {matches => {
@@ -32,6 +32,7 @@ export default function FirstBookingStepForm({ initialFormState, onSubmit }) {
                      setTimeout(() => {
                         onSubmit(values);
                         setSubmitting(false);
+                        history.push('/second-booking-step');
                      }, 3000);
                   }}
                   validateOnChange={false}
@@ -194,4 +195,5 @@ export default function FirstBookingStepForm({ initialFormState, onSubmit }) {
 FirstBookingStepForm.propTypes = {
    initialFormState: PropTypes.object.isRequired,
    onSubmit: PropTypes.func.isRequired,
+   history: PropTypes.object.isRequired,
 };
