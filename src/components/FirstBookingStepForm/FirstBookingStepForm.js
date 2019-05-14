@@ -15,10 +15,11 @@ import DayPicker from '../DayPicker';
 import ErrorMessage from '../ui/ErrorMessage';
 import css from './FirstBookingStepForm.module.scss';
 import validator from './validator';
+import { getCitiesData } from '../../utils/api';
 
 const options = number => new Array(number).fill(0).map((_, index) => ({ label: index, value: index }));
 
-export default function FirstBookingStepForm({ initialFormState }) {
+export default function FirstBookingStepForm({ initialFormState, onSubmit }) {
    return (
       <Media query="(max-width: 980px)">
          {matches => {
@@ -29,7 +30,7 @@ export default function FirstBookingStepForm({ initialFormState }) {
                   initialValues={initialFormState}
                   onSubmit={(values, { setSubmitting }) => {
                      setTimeout(() => {
-                        console.log(JSON.stringify(values, null, 2));
+                        onSubmit(values);
                         setSubmitting(false);
                      }, 3000);
                   }}
@@ -56,10 +57,8 @@ export default function FirstBookingStepForm({ initialFormState }) {
                                     onChange={setFieldValue}
                                     value={values.startAddress}
                                     name="startAddress"
-                                    defaultOptions={[
-                                       { label: 'Kraków', value: 'kraków' },
-                                       { label: 'Warszawa', value: 'warszawa' },
-                                    ]}
+                                    defaultOptions
+                                    loadOptions={getCitiesData}
                                  />
                               </LabelContainer>
 
@@ -75,10 +74,8 @@ export default function FirstBookingStepForm({ initialFormState }) {
                                     onChange={setFieldValue}
                                     value={values.endAddress}
                                     name="endAddress"
-                                    defaultOptions={[
-                                       { label: 'Kraków', value: 'kraków' },
-                                       { label: 'Warszawa', value: 'warszawa' },
-                                    ]}
+                                    defaultOptions
+                                    loadOptions={getCitiesData}
                                  />
                               </LabelContainer>
 
@@ -196,4 +193,5 @@ export default function FirstBookingStepForm({ initialFormState }) {
 
 FirstBookingStepForm.propTypes = {
    initialFormState: PropTypes.object.isRequired,
+   onSubmit: PropTypes.func.isRequired,
 };

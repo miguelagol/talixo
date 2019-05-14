@@ -9,6 +9,10 @@ class App extends React.Component {
       firstFormData: { date: new Date() },
    };
 
+   handleFormSubmit = formData => {
+      this.setState({ firstFormData: formData });
+   };
+
    render() {
       const { firstFormData } = this.state;
 
@@ -20,7 +24,7 @@ class App extends React.Component {
 
             <div className={css['content-container']}>
                <BookingSteps activeStep={1} />
-               <FirstBookingStepForm initialFormState={firstFormData} />
+               <FirstBookingStepForm initialFormState={firstFormData} onSubmit={this.handleFormSubmit} />
             </div>
          </div>
       );
