@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import AsyncSelect from 'react-select/lib/Async';
 
 const colors = {
@@ -8,7 +9,7 @@ const colors = {
    tundora: '#4c4c4c',
 };
 
-export default function Select({ ...rest }) {
+export default function Select({ onChange, name, ...rest }) {
    const selectStyles = {
       control: (styles, { isFocused }) => ({
          ...styles,
@@ -65,5 +66,27 @@ export default function Select({ ...rest }) {
       }),
    };
 
-   return <AsyncSelect escapeClearsValue isClearable isSearchable styles={selectStyles} {...rest} />;
+   const onSelectChange = value => onChange(name, value);
+
+   return (
+      <AsyncSelect
+         escapeClearsValue
+         isClearable
+         isSearchable
+         styles={selectStyles}
+         name={name}
+         onChange={onSelectChange}
+         {...rest}
+      />
+   );
 }
+
+Select.propTypes = {
+   onChange: PropTypes.func,
+   name: PropTypes.string,
+};
+
+Select.defaultProps = {
+   onChange: () => {},
+   name: undefined,
+};
