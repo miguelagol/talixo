@@ -5,7 +5,13 @@ import BookingSteps from './components/BookingSteps';
 import FirstBookingStepForm from './components/FirstBookingStepForm';
 
 class App extends React.Component {
+   state = {
+      firstFormData: { date: new Date() },
+   };
+
    render() {
+      const { firstFormData } = this.state;
+
       return (
          <div className={css.app}>
             <header className={css.header}>
@@ -14,7 +20,7 @@ class App extends React.Component {
 
             <div className={css['content-container']}>
                <BookingSteps activeStep={1} />
-               <FirstBookingStepForm />
+               <FirstBookingStepForm initialFormState={firstFormData} />
             </div>
          </div>
       );

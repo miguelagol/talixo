@@ -10,7 +10,7 @@ import css from './DayPicker.module.scss';
 
 const classNames = classnames.bind(css);
 
-function DayPicker({ labelPosition, isSmallScreen }) {
+function DayPicker({ labelPosition, isSmallScreen, value, name, onChange }) {
    const labelClasses = classNames('day-container', 'active');
 
    const containerClasses = classNames('container', { 'small-screen': isSmallScreen });
@@ -40,14 +40,15 @@ function DayPicker({ labelPosition, isSmallScreen }) {
                <label className={css['calendar-container']}>
                   {<GoCalendar className={css['calendar-icon']} />}
                   <DatePicker
-                     value={new Date('05 12 2019 8:00 PM')}
+                     value={value}
+                     name={name}
                      className={css['date-picker']}
                      popperPlacement="left"
                      popperClassName={css.popper}
                      showTimeSelect={isSmallScreen}
                      timeIntervals={15}
-                     dateFormat="hh:mm"
                      timeCaption="Time"
+                     onChange={onChange}
                   />
                </label>
             </div>
@@ -56,13 +57,16 @@ function DayPicker({ labelPosition, isSmallScreen }) {
             <LabelContainer labelPosition={labelPosition} label={labelPosition === 'top' ? 'At:' : ''} as="div">
                <LabelContainer labelPosition="right" label={<FaRegClock className={css['clock-icon']} />}>
                   <DatePicker
-                     value={new Date('05 12 2019 8:00 PM')}
+                     value={value}
+                     name={name}
                      popperClassName={css.popper}
                      showTimeSelect
                      showTimeSelectOnly
                      timeIntervals={15}
-                     dateFormat="hh:mm"
+                     timeFormat="HH:mm"
+                     dateFormat="HH:mm"
                      timeCaption="Time"
+                     onChange={onChange}
                   />
                </LabelContainer>
             </LabelContainer>
@@ -74,6 +78,15 @@ function DayPicker({ labelPosition, isSmallScreen }) {
 DayPicker.propTypes = {
    labelPosition: PropTypes.string.isRequired,
    isSmallScreen: PropTypes.bool.isRequired,
+   value: PropTypes.object,
+   name: PropTypes.string,
+   onChange: PropTypes.func,
+};
+
+DayPicker.defaultProps = {
+   value: undefined,
+   name: undefined,
+   onChange: undefined,
 };
 
 // eslint-disable-next-line react/display-name
