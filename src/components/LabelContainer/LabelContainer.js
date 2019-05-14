@@ -5,20 +5,23 @@ import css from './LabelContainer.module.scss';
 
 const classNames = classnames.bind(css);
 
-export default function LabelContainer({ className, labelPosition, label, children, variant, as, ...rest }) {
+export default function LabelContainer({ className, labelPosition, label, children, variant, as, showError, ...rest }) {
    const containerClasses = classNames('label-container', className, {
+      error: showError && labelPosition === 'left',
       [`label-container--${labelPosition}`]: labelPosition,
       'no-label': !label,
    });
 
    const labelClasses = classNames('label', { [`label--${variant}`]: variant });
 
+   const childrenClasses = classNames('children', { error: showError && labelPosition === 'top' });
+
    const Container = as || 'label';
 
    return (
       <Container className={containerClasses} {...rest}>
          {label && <div className={labelClasses}>{label}</div>}
-         <div className={css.children}>{children}</div>
+         <div className={childrenClasses}>{children}</div>
       </Container>
    );
 }
@@ -30,10 +33,12 @@ LabelContainer.propTypes = {
    children: PropTypes.node.isRequired,
    variant: PropTypes.oneOf(['dark']),
    as: PropTypes.string,
+   showError: PropTypes.string,
 };
 
 LabelContainer.defaultProps = {
    className: undefined,
    variant: undefined,
    as: undefined,
+   showError: undefined,
 };
