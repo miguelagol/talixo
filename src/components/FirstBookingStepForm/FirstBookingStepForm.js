@@ -7,12 +7,12 @@ import { FaSkiingNordic as SportIcon } from 'react-icons/fa';
 import { IoIosPerson as PersonIcon } from 'react-icons/io';
 import { Formik } from 'formik';
 import PropTypes from 'prop-types';
-import Button from '../Button';
-import LabelContainer from '../LabelContainer';
-import Input from '../Input';
-import Select from '../Select';
+import Button from '../ui/Button';
+import LabelContainer from '../ui/LabelContainer';
+import Input from '../ui/Input';
+import Select from '../ui/Select';
 import DayPicker from '../DayPicker';
-import ErrorMessage from '../ErrorMessage';
+import ErrorMessage from '../ui/ErrorMessage';
 import css from './FirstBookingStepForm.module.scss';
 import validator from './validator';
 

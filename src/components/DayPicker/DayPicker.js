@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import Media from 'react-media';
 import { GoCalendar } from 'react-icons/go';
 import { FaRegClock } from 'react-icons/fa';
-import DatePicker from '../DatePicker';
-import LabelContainer from '../LabelContainer';
+import DatePicker from '../ui/DatePicker';
+import LabelContainer from '../ui/LabelContainer';
 import css from './DayPicker.module.scss';
 
 const classNames = classnames.bind(css);
