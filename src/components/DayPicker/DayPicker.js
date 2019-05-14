@@ -46,7 +46,8 @@ function DayPicker({ labelPosition, isSmallScreen, value, name, onChange }) {
                      popperPlacement="left"
                      popperClassName={css.popper}
                      showTimeSelect={isSmallScreen}
-                     timeIntervals={15}
+                     timeIntervals={5}
+                     timeFormat="HH:mm"
                      timeCaption="Time"
                      onChange={onChange}
                   />
@@ -62,7 +63,7 @@ function DayPicker({ labelPosition, isSmallScreen, value, name, onChange }) {
                      popperClassName={css.popper}
                      showTimeSelect
                      showTimeSelectOnly
-                     timeIntervals={15}
+                     timeIntervals={5}
                      timeFormat="HH:mm"
                      dateFormat="HH:mm"
                      timeCaption="Time"

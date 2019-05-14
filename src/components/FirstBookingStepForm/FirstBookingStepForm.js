@@ -12,7 +12,9 @@ import LabelContainer from '../LabelContainer';
 import Input from '../Input';
 import Select from '../Select';
 import DayPicker from '../DayPicker';
+import ErrorMessage from '../ErrorMessage';
 import css from './FirstBookingStepForm.module.scss';
+import validator from './validator';
 
 export default function FirstBookingStepForm({ initialFormState }) {
    return (
@@ -29,17 +31,24 @@ export default function FirstBookingStepForm({ initialFormState }) {
                         setSubmitting(false);
                      }, 3000);
                   }}
+                  validateOnChange={false}
+                  validateOnBlur={false}
+                  validate={validator}
                >
                   {props => {
                      // eslint-disable-next-line react/prop-types
-                     const { values, isSubmitting, handleSubmit, setFieldValue } = props;
+                     const { values, errors, isSubmitting, handleSubmit, setFieldValue } = props;
 
                      return (
                         <form onSubmit={handleSubmit}>
                            {isSubmitting && <span>Submitting...</span>}
 
                            <div className={css.container}>
-                              <LabelContainer labelPosition={labelPosition} label="Pick up:">
+                              <LabelContainer
+                                 labelPosition={labelPosition}
+                                 label="Pick up:"
+                                 showError={errors.startAddress}
+                              >
                                  <Select
                                     placeholder="e.g Torstrasse 124, Berlin"
                                     onChange={setFieldValue}
@@ -52,7 +61,13 @@ export default function FirstBookingStepForm({ initialFormState }) {
                                  />
                               </LabelContainer>
 
-                              <LabelContainer labelPosition={labelPosition} label="Destination:">
+                              {errors.startAddress && <ErrorMessage error={errors.startAddress} />}
+
+                              <LabelContainer
+                                 labelPosition={labelPosition}
+                                 label="Destination:"
+                                 showError={errors.endAddress}
+                              >
                                  <Select
                                     placeholder="e.g Tegel Airport"
                                     onChange={setFieldValue}
@@ -65,14 +80,21 @@ export default function FirstBookingStepForm({ initialFormState }) {
                                  />
                               </LabelContainer>
 
+                              {errors.endAddress && <ErrorMessage error={errors.endAddress} />}
+
                               <DayPicker
+                                 showError={errors.date}
                                  labelPosition={labelPosition}
                                  onChange={setFieldValue}
                                  value={values.date}
                                  name="date"
                               />
 
-                              <LabelContainer labelPosition={labelPosition} label="Voucher code (optional):">
+                              <LabelContainer
+                                 labelPosition={labelPosition}
+                                 label="Voucher code (optional):"
+                                 showError={errors.voucherCode}
+                              >
                                  <Input
                                     autoComplete="off"
                                     name="voucherCode"
@@ -80,6 +102,8 @@ export default function FirstBookingStepForm({ initialFormState }) {
                                     onChange={setFieldValue}
                                  />
                               </LabelContainer>
+
+                              {errors.voucherCode && <ErrorMessage error={errors.voucherCode} />}
 
                               <div className={css['options-container']}>
                                  <span>For 1-2 passengers with 1-2 bags</span>
