@@ -16,6 +16,8 @@ import ErrorMessage from '../ErrorMessage';
 import css from './FirstBookingStepForm.module.scss';
 import validator from './validator';
 
+const options = number => new Array(number).fill(0).map((_, index) => ({ label: index, value: index }));
+
 export default function FirstBookingStepForm({ initialFormState }) {
    return (
       <Media query="(max-width: 980px)">
@@ -119,7 +121,7 @@ export default function FirstBookingStepForm({ initialFormState }) {
                                           onChange={setFieldValue}
                                           value={values.passengers}
                                           name="passengers"
-                                          defaultOptions={[{ label: '1', value: '1' }, { label: '2', value: '2' }]}
+                                          defaultOptions={options(4)}
                                        />
                                     </LabelContainer>
 
@@ -133,7 +135,7 @@ export default function FirstBookingStepForm({ initialFormState }) {
                                           onChange={setFieldValue}
                                           value={values.suitcase}
                                           name="suitcase"
-                                          defaultOptions={[{ label: '1', value: '1' }, { label: '2', value: '2' }]}
+                                          defaultOptions={options(4)}
                                        />
                                     </LabelContainer>
 
@@ -147,7 +149,7 @@ export default function FirstBookingStepForm({ initialFormState }) {
                                           onChange={setFieldValue}
                                           value={values.sportLuggage}
                                           name="sportLuggage"
-                                          defaultOptions={[{ label: '1', value: '1' }, { label: '2', value: '2' }]}
+                                          defaultOptions={options(3)}
                                        />
                                     </LabelContainer>
 
@@ -161,7 +163,7 @@ export default function FirstBookingStepForm({ initialFormState }) {
                                           onChange={setFieldValue}
                                           value={values.pets}
                                           name="pets"
-                                          defaultOptions={[{ label: '1', value: '1' }, { label: '2', value: '2' }]}
+                                          defaultOptions={options(2)}
                                        />
                                     </LabelContainer>
 
@@ -175,14 +177,12 @@ export default function FirstBookingStepForm({ initialFormState }) {
                                           onChange={setFieldValue}
                                           value={values.childrenSeats}
                                           name="childrenSeats"
-                                          defaultOptions={[{ label: '1', value: '1' }, { label: '2', value: '2' }]}
+                                          defaultOptions={options(2)}
                                        />
                                     </LabelContainer>
                                  </div>
                               </div>
                               <Button type="submit">Start Booking</Button>
-
-                              <DisplayFormikState {...props} />
                            </div>
                         </form>
                      );
@@ -197,17 +197,3 @@ export default function FirstBookingStepForm({ initialFormState }) {
 FirstBookingStepForm.propTypes = {
    initialFormState: PropTypes.object.isRequired,
 };
-
-const DisplayFormikState = props => (
-   <div style={{ margin: '1rem 0', color: 'black' }}>
-      <pre
-         style={{
-            background: '#f6f8fa',
-            fontSize: '1rem',
-            padding: '.5rem',
-         }}
-      >
-         <strong>props</strong> = {JSON.stringify(props, null, 2)}
-      </pre>
-   </div>
-);
