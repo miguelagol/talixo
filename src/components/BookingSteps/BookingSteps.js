@@ -5,19 +5,25 @@ import css from './BookingSteps.module.scss';
 
 const classNames = classnames.bind(css);
 
-export default function BookingSteps({ activeStep }) {
-   const steps = ['Where & When', 'Choose a Car', 'Details & Payment'];
+export default function BookingSteps({ location }) {
+   const steps = [
+      { name: 'Where & When', path: '/' },
+      { name: 'Choose a Car', path: '/second-booking-step' },
+      { name: 'Details & Payment', path: '/third-booking-step' },
+   ];
+
+   const activeStep = steps.findIndex(({ path }) => path === location.pathname) + 1;
 
    const stepsClasses = classNames('booking-steps', { [`booking-steps--${activeStep}`]: activeStep });
 
    return (
       <div className={stepsClasses}>
-         {steps.map((step, index) => {
+         {steps.map(({ name }, index) => {
             const stepClasses = classNames('booking-step', { 'active-step': index === activeStep - 1 });
             return (
-               <div key={step} className={stepClasses}>
+               <div key={name} className={stepClasses}>
                   <div className={css['step-number']}>{index + 1}</div>
-                  <div className={css['step-label']}>{step}</div>
+                  <div className={css['step-label']}>{name}</div>
                </div>
             );
          })}
@@ -26,9 +32,5 @@ export default function BookingSteps({ activeStep }) {
 }
 
 BookingSteps.propTypes = {
-   activeStep: PropTypes.number,
-};
-
-BookingSteps.defaultProps = {
-   activeStep: 1,
+   location: PropTypes.object.isRequired,
 };
