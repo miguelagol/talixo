@@ -40,6 +40,7 @@ class App extends React.Component {
                               initialFormState={formData}
                               onSubmit={this.handleFormSubmit}
                               history={history}
+                              className={!formData.return ? 'first-form' : null}
                            />
                         )
                      }

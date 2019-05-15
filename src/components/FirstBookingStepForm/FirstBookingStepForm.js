@@ -17,6 +17,9 @@ import css from './FirstBookingStepForm.module.scss';
 import validator from './validator';
 import { getCitiesData } from '../../utils/api';
 import BookingSummary from '../BookingSummary';
+import classnames from 'classnames/bind';
+
+const classNames = classnames.bind(css);
 
 const options = (numberStart, numberEnd) => {
    const arrayLength = numberEnd - numberStart + 1;
@@ -26,7 +29,7 @@ const options = (numberStart, numberEnd) => {
    }));
 };
 
-export default function FirstBookingStepForm({ initialFormState, onSubmit, history }) {
+export default function FirstBookingStepForm({ initialFormState, onSubmit, history, className }) {
    return (
       <Media query="(max-width: 980px)">
          {matches => {
@@ -51,8 +54,10 @@ export default function FirstBookingStepForm({ initialFormState, onSubmit, histo
                      // eslint-disable-next-line react/prop-types
                      const { values, errors, isSubmitting, handleSubmit, setFieldValue } = props;
 
+                     const firstStepClasses = classNames('step-container', className);
+
                      return (
-                        <div className={css['step-container']}>
+                        <div className={firstStepClasses}>
                            <form onSubmit={handleSubmit}>
                               {isSubmitting && <span>Submitting...</span>}
 
@@ -207,4 +212,9 @@ FirstBookingStepForm.propTypes = {
    initialFormState: PropTypes.object.isRequired,
    onSubmit: PropTypes.func.isRequired,
    history: PropTypes.object.isRequired,
+   className: PropTypes.string,
+};
+
+FirstBookingStepForm.defaultProps = {
+   className: undefined,
 };

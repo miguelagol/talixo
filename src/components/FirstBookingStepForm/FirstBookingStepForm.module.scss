@@ -32,4 +32,8 @@
       grid-template-columns: 1fr auto;
       grid-gap: $grid * 5;
    }
+
+   .first-form {
+      grid-template-columns: 1fr;
+   }
 }
