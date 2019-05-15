@@ -61,8 +61,8 @@
    .brands {
       grid-area: brands;
       display: grid;
-      grid-template-rows: max-content;
       grid-gap: $grid;
+      align-content: start;
    }
 
    .features {

@@ -6,6 +6,7 @@
    grid-gap: $grid * 3;
    background-color: $ebony-clay;
    padding: $grid * 5;
+   align-self: start;
 }
 
 .summary-list {
@@ -16,6 +17,8 @@
 
 .label {
    color: $silver-chalice;
+   margin-bottom: $grid;
+   margin-right: $grid;
 }
 
 .voucherLabel {
@@ -27,12 +30,12 @@
 }
 
 .horizontal {
-   grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+   grid-template-columns: repeat(auto-fill, minmax(130px, max-content));
    grid-gap: $grid * 2;
-}
 
-.booking-value {
-   display: grid;
-   grid-template-columns: auto auto;
-   white-space: nowrap;
+   .booking-value {
+      display: grid;
+      grid-template-columns: max-content auto;
+      line-height: 20px;
+   }
 }
