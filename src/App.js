@@ -1,32 +1,50 @@
 import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import css from './App.module.scss';
 import logo from './images/logo.png';
 import BookingSteps from './components/BookingSteps';
 import FirstBookingStepForm from './components/FirstBookingStepForm';
+import SecondBookingStepForm from './components/SecondBookingStepForm';
 
 class App extends React.Component {
    state = {
-      firstFormData: { date: new Date() },
+      formData: { date: new Date() },
    };
 
    handleFormSubmit = formData => {
-      this.setState({ firstFormData: formData });
+      this.setState({ formData });
    };
 
    render() {
-      const { firstFormData } = this.state;
+      const { formData } = this.state;
 
       return (
-         <div className={css.app}>
-            <header className={css.header}>
-               <img src={logo} alt="Talixo logo" className={css['talixo-logo']} />
-            </header>
+         <Router>
+            <div className={css.app}>
+               <header className={css.header}>
+                  <img src={logo} alt="Talixo logo" className={css['talixo-logo']} />
+               </header>
 
-            <div className={css['content-container']}>
-               <BookingSteps activeStep={1} />
-               <FirstBookingStepForm initialFormState={firstFormData} onSubmit={this.handleFormSubmit} />
+               <div className={css['content-container']}>
+                  <Route component={BookingSteps} />
+
+                  <Route exact path="/">
+                     {({ match, history }) =>
+                        match && (
+                           <FirstBookingStepForm
+                              initialFormState={formData}
+                              onSubmit={this.handleFormSubmit}
+                              history={history}
+                           />
+                        )
+                     }
+                  </Route>
+                  <Route exact path="/second-booking-step">
+                     {({ match, history }) => match && <SecondBookingStepForm formState={formData} history={history} />}
+                  </Route>
+               </div>
             </div>
-         </div>
+         </Router>
       );
    }
 }
