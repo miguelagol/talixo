@@ -8,7 +8,12 @@ import SecondBookingStepForm from './components/SecondBookingStepForm';
 
 class App extends React.Component {
    state = {
-      formData: { date: new Date() },
+      formData: {
+         date: new Date(),
+         passengers: { label: 2, value: 2 },
+         suitcase: { label: 2, value: 2 },
+         return: false,
+      },
    };
 
    handleFormSubmit = formData => {

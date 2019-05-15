@@ -16,6 +16,7 @@ import ErrorMessage from '../ui/ErrorMessage';
 import css from './FirstBookingStepForm.module.scss';
 import validator from './validator';
 import { getCitiesData } from '../../utils/api';
+import BookingSummary from '../BookingSummary';
 
 const options = (numberStart, numberEnd) => {
    const arrayLength = numberEnd - numberStart + 1;
@@ -32,166 +33,170 @@ export default function FirstBookingStepForm({ initialFormState, onSubmit, histo
             const labelPosition = matches ? 'top' : 'left';
 
             return (
-               <Formik
-                  initialValues={initialFormState}
-                  onSubmit={(values, { setSubmitting }) => {
-                     setTimeout(() => {
-                        onSubmit(values);
-                        setSubmitting(false);
-                        history.push('/second-booking-step');
-                     }, 3000);
-                  }}
-                  validateOnChange={false}
-                  validateOnBlur={false}
-                  validate={validator}
-               >
-                  {props => {
-                     // eslint-disable-next-line react/prop-types
-                     const { values, errors, isSubmitting, handleSubmit, setFieldValue } = props;
+               <>
+                  <Formik
+                     initialValues={initialFormState}
+                     onSubmit={(values, { setSubmitting }) => {
+                        setTimeout(() => {
+                           values.return = true;
+                           onSubmit(values);
+                           setSubmitting(false);
+                           history.push('/second-booking-step');
+                        }, 3000);
+                     }}
+                     validateOnChange={false}
+                     validateOnBlur={false}
+                     validate={validator}
+                  >
+                     {props => {
+                        // eslint-disable-next-line react/prop-types
+                        const { values, errors, isSubmitting, handleSubmit, setFieldValue } = props;
 
-                     return (
-                        <form onSubmit={handleSubmit}>
-                           {isSubmitting && <span>Submitting...</span>}
+                        return (
+                           <form onSubmit={handleSubmit}>
+                              {isSubmitting && <span>Submitting...</span>}
 
-                           <div className={css.container}>
-                              <LabelContainer
-                                 labelPosition={labelPosition}
-                                 label="Pick up:"
-                                 showError={errors.startAddress}
-                              >
-                                 <Select
-                                    placeholder="e.g Torstrasse 124, Berlin"
+                              <div className={css.container}>
+                                 <LabelContainer
+                                    labelPosition={labelPosition}
+                                    label="Pick up:"
+                                    showError={errors.startAddress}
+                                 >
+                                    <Select
+                                       placeholder="e.g Torstrasse 124, Berlin"
+                                       onChange={setFieldValue}
+                                       value={values.startAddress}
+                                       name="startAddress"
+                                       defaultOptions
+                                       loadOptions={getCitiesData}
+                                    />
+                                 </LabelContainer>
+
+                                 {errors.startAddress && <ErrorMessage error={errors.startAddress} />}
+
+                                 <LabelContainer
+                                    labelPosition={labelPosition}
+                                    label="Destination:"
+                                    showError={errors.endAddress}
+                                 >
+                                    <Select
+                                       placeholder="e.g Tegel Airport"
+                                       onChange={setFieldValue}
+                                       value={values.endAddress}
+                                       name="endAddress"
+                                       defaultOptions
+                                       loadOptions={getCitiesData}
+                                    />
+                                 </LabelContainer>
+
+                                 {errors.endAddress && <ErrorMessage error={errors.endAddress} />}
+
+                                 <DayPicker
+                                    showError={errors.date}
+                                    labelPosition={labelPosition}
                                     onChange={setFieldValue}
-                                    value={values.startAddress}
-                                    name="startAddress"
-                                    defaultOptions
-                                    loadOptions={getCitiesData}
+                                    value={values.date}
+                                    name="date"
                                  />
-                              </LabelContainer>
 
-                              {errors.startAddress && <ErrorMessage error={errors.startAddress} />}
+                                 <LabelContainer
+                                    labelPosition={labelPosition}
+                                    label="Voucher code (optional):"
+                                    showError={errors.voucherCode}
+                                 >
+                                    <Input
+                                       autoComplete="off"
+                                       name="voucherCode"
+                                       value={values.voucherCode}
+                                       onChange={setFieldValue}
+                                    />
+                                 </LabelContainer>
 
-                              <LabelContainer
-                                 labelPosition={labelPosition}
-                                 label="Destination:"
-                                 showError={errors.endAddress}
-                              >
-                                 <Select
-                                    placeholder="e.g Tegel Airport"
-                                    onChange={setFieldValue}
-                                    value={values.endAddress}
-                                    name="endAddress"
-                                    defaultOptions
-                                    loadOptions={getCitiesData}
-                                 />
-                              </LabelContainer>
+                                 {errors.voucherCode && <ErrorMessage error={errors.voucherCode} />}
 
-                              {errors.endAddress && <ErrorMessage error={errors.endAddress} />}
+                                 <div className={css['options-container']}>
+                                    <span>For 1-2 passengers with 1-2 bags</span>
+                                    <span className={css['more-options']}>more options</span>
+                                    <div className={css.options}>
+                                       <LabelContainer
+                                          labelPosition="left"
+                                          label={<PersonIcon className={css.icon} />}
+                                          variant="dark"
+                                       >
+                                          <Select
+                                             placeholder="2"
+                                             onChange={setFieldValue}
+                                             value={values.passengers}
+                                             name="passengers"
+                                             defaultOptions={options(1, 4)}
+                                          />
+                                       </LabelContainer>
 
-                              <DayPicker
-                                 showError={errors.date}
-                                 labelPosition={labelPosition}
-                                 onChange={setFieldValue}
-                                 value={values.date}
-                                 name="date"
-                              />
+                                       <LabelContainer
+                                          labelPosition="left"
+                                          label={<SuitcaseIcon className={css.icon} />}
+                                          variant="dark"
+                                       >
+                                          <Select
+                                             placeholder="2"
+                                             onChange={setFieldValue}
+                                             value={values.suitcase}
+                                             name="suitcase"
+                                             defaultOptions={options(0, 4)}
+                                          />
+                                       </LabelContainer>
 
-                              <LabelContainer
-                                 labelPosition={labelPosition}
-                                 label="Voucher code (optional):"
-                                 showError={errors.voucherCode}
-                              >
-                                 <Input
-                                    autoComplete="off"
-                                    name="voucherCode"
-                                    value={values.voucherCode}
-                                    onChange={setFieldValue}
-                                 />
-                              </LabelContainer>
+                                       <LabelContainer
+                                          labelPosition="left"
+                                          label={<SportIcon className={css.icon} />}
+                                          variant="dark"
+                                       >
+                                          <Select
+                                             placeholder="0"
+                                             onChange={setFieldValue}
+                                             value={values.sportLuggage}
+                                             name="sportLuggage"
+                                             defaultOptions={options(0, 4)}
+                                          />
+                                       </LabelContainer>
 
-                              {errors.voucherCode && <ErrorMessage error={errors.voucherCode} />}
+                                       <LabelContainer
+                                          labelPosition="left"
+                                          label={<DogIcon className={css.icon} />}
+                                          variant="dark"
+                                       >
+                                          <Select
+                                             placeholder="0"
+                                             onChange={setFieldValue}
+                                             value={values.pets}
+                                             name="pets"
+                                             defaultOptions={options(0, 2)}
+                                          />
+                                       </LabelContainer>
 
-                              <div className={css['options-container']}>
-                                 <span>For 1-2 passengers with 1-2 bags</span>
-                                 <span className={css['more-options']}>more options</span>
-                                 <div className={css.options}>
-                                    <LabelContainer
-                                       labelPosition="left"
-                                       label={<PersonIcon className={css.icon} />}
-                                       variant="dark"
-                                    >
-                                       <Select
-                                          placeholder="2"
-                                          onChange={setFieldValue}
-                                          value={values.passengers}
-                                          name="passengers"
-                                          defaultOptions={options(1, 4)}
-                                       />
-                                    </LabelContainer>
-
-                                    <LabelContainer
-                                       labelPosition="left"
-                                       label={<SuitcaseIcon className={css.icon} />}
-                                       variant="dark"
-                                    >
-                                       <Select
-                                          placeholder="2"
-                                          onChange={setFieldValue}
-                                          value={values.suitcase}
-                                          name="suitcase"
-                                          defaultOptions={options(0, 4)}
-                                       />
-                                    </LabelContainer>
-
-                                    <LabelContainer
-                                       labelPosition="left"
-                                       label={<SportIcon className={css.icon} />}
-                                       variant="dark"
-                                    >
-                                       <Select
-                                          placeholder="0"
-                                          onChange={setFieldValue}
-                                          value={values.sportLuggage}
-                                          name="sportLuggage"
-                                          defaultOptions={options(0, 4)}
-                                       />
-                                    </LabelContainer>
-
-                                    <LabelContainer
-                                       labelPosition="left"
-                                       label={<DogIcon className={css.icon} />}
-                                       variant="dark"
-                                    >
-                                       <Select
-                                          placeholder="0"
-                                          onChange={setFieldValue}
-                                          value={values.pets}
-                                          name="pets"
-                                          defaultOptions={options(0, 2)}
-                                       />
-                                    </LabelContainer>
-
-                                    <LabelContainer
-                                       labelPosition="left"
-                                       label={<BabyIcon className={css.icon} />}
-                                       variant="dark"
-                                    >
-                                       <Select
-                                          placeholder="0"
-                                          onChange={setFieldValue}
-                                          value={values.childrenSeats}
-                                          name="childrenSeats"
-                                          defaultOptions={options(0, 2)}
-                                       />
-                                    </LabelContainer>
+                                       <LabelContainer
+                                          labelPosition="left"
+                                          label={<BabyIcon className={css.icon} />}
+                                          variant="dark"
+                                       >
+                                          <Select
+                                             placeholder="0"
+                                             onChange={setFieldValue}
+                                             value={values.childrenSeats}
+                                             name="childrenSeats"
+                                             defaultOptions={options(0, 2)}
+                                          />
+                                       </LabelContainer>
+                                    </div>
                                  </div>
+                                 <Button type="submit">Start Booking</Button>
                               </div>
-                              <Button type="submit">Start Booking</Button>
-                           </div>
-                        </form>
-                     );
-                  }}
-               </Formik>
+                           </form>
+                        );
+                     }}
+                  </Formik>
+                  {initialFormState.return && <BookingSummary formState={initialFormState} />}
+               </>
             );
          }}
       </Media>
