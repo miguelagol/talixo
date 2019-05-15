@@ -1,5 +1,5 @@
-<p align="center" style="background-color: #1e2731">
-    <img src="src/images/logo.png" style="padding: 30px 0">
+<p align="center" >
+    <img src="https://user-images.githubusercontent.com/35661234/57802376-17b2d700-7756-11e9-8312-8fa55dc8092d.png">
 </p>
 
 ## Talixo booking App
