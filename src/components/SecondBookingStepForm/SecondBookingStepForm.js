@@ -1,12 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Redirect } from 'react-router';
 import { carsOptions } from '../../data/carsData';
 import BookingSummary from '../BookingSummary';
 import Button from '../ui/Button';
 import css from './SecondBookingStepForm.module.scss';
 
-export default function SecondBookingStepForm({ formState }) {
-   return (
+export default function SecondBookingStepForm({ formState, isFormEmpty }) {
+   return isFormEmpty ? (
+      <Redirect to="/" />
+   ) : (
       <div className={css.container}>
          <BookingSummary formState={formState} />
          <div className={css['cars-container']}>
@@ -46,4 +49,5 @@ export default function SecondBookingStepForm({ formState }) {
 
 SecondBookingStepForm.propTypes = {
    formState: PropTypes.object.isRequired,
+   isFormEmpty: PropTypes.bool.isRequired,
 };

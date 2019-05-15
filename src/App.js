@@ -46,7 +46,15 @@ class App extends React.Component {
                      }
                   </Route>
                   <Route exact path="/second-booking-step">
-                     {({ match, history }) => match && <SecondBookingStepForm formState={formData} history={history} />}
+                     {({ match, history }) =>
+                        match && (
+                           <SecondBookingStepForm
+                              formState={formData}
+                              history={history}
+                              isFormEmpty={formData.isFormEmpty}
+                           />
+                        )
+                     }
                   </Route>
                </div>
             </div>
