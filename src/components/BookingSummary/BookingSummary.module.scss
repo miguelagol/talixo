@@ -1,0 +1,28 @@
+@import 'config';
+
+.summary {
+   display: grid;
+   grid-gap: $grid * 3;
+   background-color: $ebony-clay;
+   padding: $grid * 5;
+   width: max-content;
+}
+
+.summary-list {
+   display: grid;
+   grid-template-columns: auto auto;
+   grid-gap: $grid * 2 $grid * 3;
+   font-size: $font-s;
+}
+
+.label {
+   color: $silver-chalice;
+}
+
+.voucherLabel {
+   color: $orange;
+}
+
+.header {
+   font-size: $font-xl;
+}
