@@ -21,6 +21,8 @@
    display: grid;
    grid-template-columns: repeat(2, max-content);
    grid-gap: $grid;
+   text-decoration: none;
+   color: white;
 }
 
 .step-number {
