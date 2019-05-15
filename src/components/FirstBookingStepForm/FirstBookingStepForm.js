@@ -33,26 +33,26 @@ export default function FirstBookingStepForm({ initialFormState, onSubmit, histo
             const labelPosition = matches ? 'top' : 'left';
 
             return (
-               <>
-                  <Formik
-                     initialValues={initialFormState}
-                     onSubmit={(values, { setSubmitting }) => {
-                        setTimeout(() => {
-                           values.return = true;
-                           onSubmit(values);
-                           setSubmitting(false);
-                           history.push('/second-booking-step');
-                        }, 3000);
-                     }}
-                     validateOnChange={false}
-                     validateOnBlur={false}
-                     validate={validator}
-                  >
-                     {props => {
-                        // eslint-disable-next-line react/prop-types
-                        const { values, errors, isSubmitting, handleSubmit, setFieldValue } = props;
+               <Formik
+                  initialValues={initialFormState}
+                  onSubmit={(values, { setSubmitting }) => {
+                     setTimeout(() => {
+                        values.return = true;
+                        onSubmit(values);
+                        setSubmitting(false);
+                        history.push('/second-booking-step');
+                     }, 3000);
+                  }}
+                  validateOnChange={false}
+                  validateOnBlur={false}
+                  validate={validator}
+               >
+                  {props => {
+                     // eslint-disable-next-line react/prop-types
+                     const { values, errors, isSubmitting, handleSubmit, setFieldValue } = props;
 
-                        return (
+                     return (
+                        <div className={css['step-container']}>
                            <form onSubmit={handleSubmit}>
                               {isSubmitting && <span>Submitting...</span>}
 
@@ -192,11 +192,11 @@ export default function FirstBookingStepForm({ initialFormState, onSubmit, histo
                                  <Button type="submit">Start Booking</Button>
                               </div>
                            </form>
-                        );
-                     }}
-                  </Formik>
-                  {initialFormState.return && <BookingSummary formState={initialFormState} />}
-               </>
+                           {initialFormState.return && <BookingSummary formState={initialFormState} />}
+                        </div>
+                     );
+                  }}
+               </Formik>
             );
          }}
       </Media>

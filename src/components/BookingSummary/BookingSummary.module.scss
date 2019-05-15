@@ -2,6 +2,7 @@
 
 .summary {
    display: grid;
+   grid-template-rows: max-content;
    grid-gap: $grid * 3;
    background-color: $ebony-clay;
    padding: $grid * 5;
@@ -10,8 +11,7 @@
 
 .summary-list {
    display: grid;
-   grid-template-columns: auto auto;
-   grid-gap: $grid * 2 $grid * 3;
+   grid-gap: $grid * 2;
    font-size: $font-s;
 }
 

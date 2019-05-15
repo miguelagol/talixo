@@ -25,3 +25,11 @@
       }
    }
 }
+
+@media screen and (min-width: $bp-desktop) {
+   .step-container {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      grid-gap: $grid * 5;
+   }
+}
