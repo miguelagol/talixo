@@ -1,0 +1,111 @@
+@import 'config';
+
+.container {
+   display: grid;
+}
+
+.cars-container {
+   display: grid;
+   grid-gap: $grid * 5;
+   background-color: white;
+   color: $ebony-clay;
+   font-size: $font-s;
+   padding: $grid * 3;
+}
+
+.car-container {
+   display: grid;
+}
+
+.price-container {
+   display: grid;
+   grid-template-columns: 1fr auto;
+   align-items: center;
+   background-color: $wild-sand;
+   padding: $grid $grid * 3;
+
+   .price {
+      font-size: $font-xl;
+      font-weight: $font-thin;
+   }
+
+   .price-button {
+      justify-self: flex-end;
+      color: white;
+      font-size: $font-m;
+   }
+}
+
+.car {
+   width: 275px;
+   justify-self: center;
+   padding-top: $grid * 2;
+}
+
+.description {
+   display: grid;
+   grid-template: auto auto / auto auto;
+   grid-template-areas:
+      'title title'
+      'brands features';
+
+   .title {
+      font-size: $font-xxl;
+      line-height: $grid * 8;
+      grid-area: title;
+      grid-column: span 2;
+      justify-self: center;
+      font-weight: $font-thin;
+   }
+
+   .brands {
+      grid-area: brands;
+      display: grid;
+      grid-gap: $grid;
+      align-content: start;
+   }
+
+   .features {
+      grid-area: features;
+      display: grid;
+      grid-gap: $grid;
+   }
+}
+
+.header {
+   padding-bottom: $grid;
+   color: $iron;
+   font-weight: $font-bold;
+}
+
+@media screen and (min-width: $bp-desktop) {
+   .car-container {
+      grid-template-columns: max-content auto 244px;
+      grid-template-areas: 'car description price';
+      grid-gap: $grid * 2;
+   }
+
+   .price-container {
+      grid-template: auto auto / auto;
+      padding: $grid * 2 $grid;
+
+      .price-button,
+      .price {
+         justify-self: center;
+      }
+   }
+
+   .car {
+      grid-area: car;
+   }
+
+   .description {
+      grid-area: description;
+      grid-gap: $grid;
+
+      .features,
+      .brands {
+         line-height: 20px;
+      }
+   }
+}

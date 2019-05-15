@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import classnames from 'classnames/bind';
 import css from './BookingSteps.module.scss';
@@ -21,10 +22,10 @@ export default function BookingSteps({ location }) {
          {steps.map(({ name }, index) => {
             const stepClasses = classNames('booking-step', { 'active-step': index === activeStep - 1 });
             return (
-               <div key={name} className={stepClasses}>
+               <NavLink to={steps[index].path} key={name} className={stepClasses}>
                   <div className={css['step-number']}>{index + 1}</div>
                   <div className={css['step-label']}>{name}</div>
-               </div>
+               </NavLink>
             );
          })}
       </div>

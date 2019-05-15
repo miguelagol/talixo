@@ -5,22 +5,30 @@
    grid-gap: $grid * 3;
    background-color: $ebony-clay;
    padding: $grid * 5;
-   width: max-content;
+   align-self: start;
 }
 
 .summary-list {
    display: grid;
-   grid-template-columns: auto auto;
-   grid-gap: $grid * 2 $grid * 3;
    font-size: $font-s;
+   grid-template-columns: repeat(auto-fill, minmax(130px, max-content));
+   grid-gap: $grid * 2;
+
+   .booking-value {
+      display: grid;
+      grid-template-columns: max-content auto;
+      line-height: 20px;
+   }
 }
 
 .label {
    color: $silver-chalice;
+   margin-right: $grid;
 }
 
-.voucherLabel {
+.voucher-label {
    color: $orange;
+   margin-right: $grid;
 }
 
 .header {
