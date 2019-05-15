@@ -65,6 +65,7 @@ export default function FirstBookingStepForm({ initialFormState, onSubmit, histo
                                        onChange={setFieldValue}
                                        value={values.startAddress}
                                        name="startAddress"
+                                       isClearable
                                        defaultOptions
                                        loadOptions={getCitiesData}
                                     />
@@ -82,6 +83,7 @@ export default function FirstBookingStepForm({ initialFormState, onSubmit, histo
                                        onChange={setFieldValue}
                                        value={values.endAddress}
                                        name="endAddress"
+                                       isClearable
                                        defaultOptions
                                        loadOptions={getCitiesData}
                                     />

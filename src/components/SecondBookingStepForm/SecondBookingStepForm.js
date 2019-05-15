@@ -14,8 +14,7 @@ export default function SecondBookingStepForm({ formState, isFormEmpty }) {
          <BookingSummary formState={formState} />
          <div className={css['cars-container']}>
             {carsOptions.map(({ url, title, brands, features, price }, index) => (
-               // eslint-disable-next-line react/jsx-key
-               <div className={css['car-container']}>
+               <div key={title} className={css['car-container']}>
                   <div className={css['price-container']}>
                      <span className={css.price}>€ {price}</span>
                      <Button variant="rounded" type="button" className={css['price-button']}>
@@ -28,15 +27,13 @@ export default function SecondBookingStepForm({ formState, isFormEmpty }) {
                      <div className={css.brands}>
                         <h3 className={css.header}>EXAMPLE CARS</h3>
                         {brands.map(brand => (
-                           // eslint-disable-next-line react/jsx-key
-                           <span>{brand}</span>
+                           <span key={brand}>{brand}</span>
                         ))}
                      </div>
                      <div className={css.features}>
                         <h3 className={css.header}>FEATURES</h3>
                         {features.map(feature => (
-                           // eslint-disable-next-line react/jsx-key
-                           <span>{feature}</span>
+                           <span key={feature}>{feature}</span>
                         ))}
                      </div>
                   </div>

@@ -71,7 +71,6 @@ export default function Select({ onChange, name, ...rest }) {
    return (
       <AsyncSelect
          escapeClearsValue
-         isClearable
          isSearchable
          styles={selectStyles}
          name={name}

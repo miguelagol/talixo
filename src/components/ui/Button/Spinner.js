@@ -1,7 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-// eslint-disable-next-line react/prop-types
-export default function Spinner({ svg, className }) {
+export default function Spinner({ className }) {
    return (
       <svg className={className} width="48" height="48" viewBox="0 0 120 30" fill="#ffffff">
          <circle cx="15" cy="15" r="15">
@@ -73,3 +73,11 @@ export default function Spinner({ svg, className }) {
       </svg>
    );
 }
+
+Spinner.propTypes = {
+   className: PropTypes.string,
+};
+
+Spinner.defaultProps = {
+   className: undefined,
+};

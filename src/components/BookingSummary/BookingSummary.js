@@ -43,27 +43,27 @@ export default function BookingSummary({ formState }) {
                   <div className={css.label}>Passengers:</div> <div>{passengers.label}</div>
                </div>
             )}
-            {suitcase !== undefined && suitcase.label !== 0 && (
+            {suitcase && suitcase.label !== 0 && (
                <div className={css['booking-value']}>
                   <div className={css.label}>Luggage:</div> <div>{suitcase.label}</div>
                </div>
             )}
-            {sportLuggage !== undefined && sportLuggage.label !== 0 && (
+            {sportLuggage && sportLuggage.label !== 0 && (
                <div className={css['booking-value']}>
                   <div className={css.label}>Sport luggage:</div> <div>{sportLuggage.label}</div>
                </div>
             )}
-            {pets !== undefined && pets.label !== 0 && (
+            {pets && pets.label !== 0 && (
                <div className={css['booking-value']}>
                   <div className={css.label}>Animals:</div> <div>{pets.label}</div>
                </div>
             )}
-            {childrenSeats !== undefined && childrenSeats.label !== 0 && (
+            {childrenSeats && childrenSeats.label !== 0 && (
                <div className={css['booking-value']}>
                   <div className={css.label}>Children seats:</div> <div>{childrenSeats.label}</div>
                </div>
             )}
-            {voucherCode !== undefined && (
+            {voucherCode && (
                <div className={css['booking-value']}>
                   <div className={css['voucher-label']}>Voucher code:</div> <div>{voucherCode}</div>
                </div>
