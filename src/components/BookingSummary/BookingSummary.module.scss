@@ -11,25 +11,7 @@
 
 .summary-list {
    display: grid;
-   grid-gap: $grid * 2;
    font-size: $font-s;
-}
-
-.label {
-   color: $silver-chalice;
-   margin-bottom: $grid;
-   margin-right: $grid;
-}
-
-.voucherLabel {
-   color: $orange;
-}
-
-.header {
-   font-size: $font-xl;
-}
-
-.horizontal {
    grid-template-columns: repeat(auto-fill, minmax(130px, max-content));
    grid-gap: $grid * 2;
 
@@ -38,4 +20,19 @@
       grid-template-columns: max-content auto;
       line-height: 20px;
    }
+}
+
+.label {
+   color: $silver-chalice;
+   margin-bottom: $grid;
+   margin-right: $grid;
+}
+
+.voucher-label {
+   color: $orange;
+   margin-right: $grid;
+}
+
+.header {
+   font-size: $font-xl;
 }

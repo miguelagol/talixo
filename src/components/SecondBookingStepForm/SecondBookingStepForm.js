@@ -8,7 +8,7 @@ import css from './SecondBookingStepForm.module.scss';
 export default function SecondBookingStepForm({ formState }) {
    return (
       <div className={css.container}>
-         <BookingSummary formState={formState} variant="horizontal" />
+         <BookingSummary formState={formState} />
          <div className={css['cars-container']}>
             {carsOptions.map(({ url, title, brands, features, price }, index) => (
                // eslint-disable-next-line react/jsx-key

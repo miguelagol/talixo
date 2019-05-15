@@ -1,12 +1,9 @@
 import React from 'react';
 import { format } from 'date-fns';
 import PropTypes from 'prop-types';
-import classnames from 'classnames/bind';
 import css from './BookingSummary.module.scss';
 
-const classNames = classnames.bind(css);
-
-export default function BookingSummary({ formState, variant }) {
+export default function BookingSummary({ formState }) {
    const {
       startAddress,
       endAddress,
@@ -19,12 +16,10 @@ export default function BookingSummary({ formState, variant }) {
       childrenSeats,
    } = formState;
 
-   const summaryListClasses = classNames('summary-list', { [variant]: variant });
-
    return (
       <div className={css.summary}>
          <h2 className={css.header}>Your booking</h2>
-         <div className={summaryListClasses}>
+         <div className={css['summary-list']}>
             <div className={css['booking-value']}>
                <div className={css.label}>From:</div>
                <div>{startAddress.label}</div>
@@ -70,7 +65,7 @@ export default function BookingSummary({ formState, variant }) {
             )}
             {voucherCode !== undefined && (
                <div className={css['booking-value']}>
-                  <div className={css.voucherLabel}>Voucher code:</div> <div>{voucherCode}</div>
+                  <div className={css['voucher-label']}>Voucher code:</div> <div>{voucherCode}</div>
                </div>
             )}
          </div>
@@ -80,9 +75,4 @@ export default function BookingSummary({ formState, variant }) {
 
 BookingSummary.propTypes = {
    formState: PropTypes.object.isRequired,
-   variant: PropTypes.string,
-};
-
-BookingSummary.defaultProps = {
-   variant: undefined,
 };
