@@ -12,4 +12,10 @@
    &--rounded {
       border-radius: 25px;
    }
+
+   .spinner {
+      vertical-align: top;
+      margin-left: $grid * 2;
+      height: 48px;
+   }
 }

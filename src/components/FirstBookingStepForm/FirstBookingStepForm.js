@@ -54,8 +54,6 @@ export default function FirstBookingStepForm({ initialFormState, onSubmit, histo
                      return (
                         <div className={css['step-container']}>
                            <form onSubmit={handleSubmit}>
-                              {isSubmitting && <span>Submitting...</span>}
-
                               <div className={css.container}>
                                  <LabelContainer
                                     labelPosition={labelPosition}
@@ -189,7 +187,9 @@ export default function FirstBookingStepForm({ initialFormState, onSubmit, histo
                                        </LabelContainer>
                                     </div>
                                  </div>
-                                 <Button type="submit">Start Booking</Button>
+                                 <Button type="submit" loading={isSubmitting}>
+                                    Start Booking
+                                 </Button>
                               </div>
                            </form>
                            {!isFormEmpty && <BookingSummary formState={initialFormState} />}
