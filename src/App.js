@@ -12,7 +12,7 @@ class App extends React.Component {
          date: new Date(),
          passengers: { label: 2, value: 2 },
          suitcase: { label: 2, value: 2 },
-         return: false,
+         isFormEmpty: true,
       },
    };
 
@@ -40,7 +40,7 @@ class App extends React.Component {
                               initialFormState={formData}
                               onSubmit={this.handleFormSubmit}
                               history={history}
-                              className={!formData.return ? 'first-form' : null}
+                              isFormEmpty={formData.isFormEmpty}
                            />
                         )
                      }

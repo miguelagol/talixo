@@ -2,7 +2,6 @@
 
 .summary {
    display: grid;
-   grid-template-rows: max-content;
    grid-gap: $grid * 3;
    background-color: $ebony-clay;
    padding: $grid * 5;
@@ -24,7 +23,6 @@
 
 .label {
    color: $silver-chalice;
-   margin-bottom: $grid;
    margin-right: $grid;
 }
 

@@ -17,9 +17,6 @@ import css from './FirstBookingStepForm.module.scss';
 import validator from './validator';
 import { getCitiesData } from '../../utils/api';
 import BookingSummary from '../BookingSummary';
-import classnames from 'classnames/bind';
-
-const classNames = classnames.bind(css);
 
 const options = (numberStart, numberEnd) => {
    const arrayLength = numberEnd - numberStart + 1;
@@ -29,7 +26,7 @@ const options = (numberStart, numberEnd) => {
    }));
 };
 
-export default function FirstBookingStepForm({ initialFormState, onSubmit, history, className }) {
+export default function FirstBookingStepForm({ initialFormState, onSubmit, history, isFormEmpty }) {
    return (
       <Media query="(max-width: 980px)">
          {matches => {
@@ -40,11 +37,11 @@ export default function FirstBookingStepForm({ initialFormState, onSubmit, histo
                   initialValues={initialFormState}
                   onSubmit={(values, { setSubmitting }) => {
                      setTimeout(() => {
-                        values.return = true;
+                        values.isFormEmpty = false;
                         onSubmit(values);
                         setSubmitting(false);
                         history.push('/second-booking-step');
-                     }, 3000);
+                     }, 1500);
                   }}
                   validateOnChange={false}
                   validateOnBlur={false}
@@ -54,10 +51,8 @@ export default function FirstBookingStepForm({ initialFormState, onSubmit, histo
                      // eslint-disable-next-line react/prop-types
                      const { values, errors, isSubmitting, handleSubmit, setFieldValue } = props;
 
-                     const firstStepClasses = classNames('step-container', className);
-
                      return (
-                        <div className={firstStepClasses}>
+                        <div className={css['step-container']}>
                            <form onSubmit={handleSubmit}>
                               {isSubmitting && <span>Submitting...</span>}
 
@@ -197,7 +192,7 @@ export default function FirstBookingStepForm({ initialFormState, onSubmit, histo
                                  <Button type="submit">Start Booking</Button>
                               </div>
                            </form>
-                           {initialFormState.return && <BookingSummary formState={initialFormState} />}
+                           {!isFormEmpty && <BookingSummary formState={initialFormState} />}
                         </div>
                      );
                   }}
@@ -212,9 +207,5 @@ FirstBookingStepForm.propTypes = {
    initialFormState: PropTypes.object.isRequired,
    onSubmit: PropTypes.func.isRequired,
    history: PropTypes.object.isRequired,
-   className: PropTypes.string,
-};
-
-FirstBookingStepForm.defaultProps = {
-   className: undefined,
+   isFormEmpty: PropTypes.bool.isRequired,
 };
