@@ -17,7 +17,13 @@ import css from './FirstBookingStepForm.module.scss';
 import validator from './validator';
 import { getCitiesData } from '../../utils/api';
 
-const options = number => new Array(number).fill(0).map((_, index) => ({ label: index, value: index }));
+const options = (numberStart, numberEnd) => {
+   const arrayLength = numberEnd - numberStart + 1;
+   return new Array(arrayLength).fill(0).map((_, index) => ({
+      label: numberStart === 0 ? index : index + 1,
+      value: numberStart === 0 ? index : index + 1,
+   }));
+};
 
 export default function FirstBookingStepForm({ initialFormState, onSubmit, history }) {
    return (
@@ -119,7 +125,7 @@ export default function FirstBookingStepForm({ initialFormState, onSubmit, histo
                                           onChange={setFieldValue}
                                           value={values.passengers}
                                           name="passengers"
-                                          defaultOptions={options(4)}
+                                          defaultOptions={options(1, 4)}
                                        />
                                     </LabelContainer>
 
@@ -133,7 +139,7 @@ export default function FirstBookingStepForm({ initialFormState, onSubmit, histo
                                           onChange={setFieldValue}
                                           value={values.suitcase}
                                           name="suitcase"
-                                          defaultOptions={options(4)}
+                                          defaultOptions={options(0, 4)}
                                        />
                                     </LabelContainer>
 
@@ -147,7 +153,7 @@ export default function FirstBookingStepForm({ initialFormState, onSubmit, histo
                                           onChange={setFieldValue}
                                           value={values.sportLuggage}
                                           name="sportLuggage"
-                                          defaultOptions={options(3)}
+                                          defaultOptions={options(0, 4)}
                                        />
                                     </LabelContainer>
 
@@ -161,7 +167,7 @@ export default function FirstBookingStepForm({ initialFormState, onSubmit, histo
                                           onChange={setFieldValue}
                                           value={values.pets}
                                           name="pets"
-                                          defaultOptions={options(2)}
+                                          defaultOptions={options(0, 2)}
                                        />
                                     </LabelContainer>
 
@@ -175,7 +181,7 @@ export default function FirstBookingStepForm({ initialFormState, onSubmit, histo
                                           onChange={setFieldValue}
                                           value={values.childrenSeats}
                                           name="childrenSeats"
-                                          defaultOptions={options(2)}
+                                          defaultOptions={options(0, 2)}
                                        />
                                     </LabelContainer>
                                  </div>
