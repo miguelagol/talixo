@@ -1,8 +1,8 @@
+# Talixo booking App
+
 <p align="center" >
     <img src="https://user-images.githubusercontent.com/35661234/57802376-17b2d700-7756-11e9-8312-8fa55dc8092d.png">
 </p>
-
-## Talixo booking App
 
 While solving the task, I put a lot of attention to make my code readable.
 I decided to extract UI components like Button, Input etc. to make them reusable (DRY principle). Given that I didn't manage to implement all the features and validation steps. The interface is not the exact copy of the original App but I tried to make it consistent and add some improvements.
@@ -17,6 +17,8 @@ Feel free to use below voucher codes while testing :)
 ## Installation
 
 ```
+git clone git@github.com:miguelagol/talixo.git
+cd talixo
 npm install
 ```
 
