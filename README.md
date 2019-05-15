@@ -1,5 +1,5 @@
-<p align="center">
-    <img src="src/images/logo.png">
+<p align="center" style="background-color: #1e2731">
+    <img src="src/images/logo.png" style="padding: 30px 0">
 </p>
 
 ## Talixo booking App
@@ -36,6 +36,15 @@ Open http://localhost:3000 to view it in the browser.
 ```
 npm test
 ```
+
+## Used technologies and libraries
+
+-  Create React App
+-  Code quality tools:
+   -  Eslint
+   -  Prettier
+   -  husky + lint-staged
+   -  Jest
 
 ## Author
 
